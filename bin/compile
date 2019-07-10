@@ -7,10 +7,8 @@ cd $BUILD_DIR
 curl https://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.gz -s -O
 mkdir -p vendor/qrencode
 mkdir -p "$BUILD_DIR/.profile.d"
-cat <<EOF >$BUILD_DIR/.profile.d/0000_set-deps-dir.sh
-export PATH="\$PATH:/app/vendor/qrencode/bin"
-export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:/app/vendor/qrencode/lib"
-EOF 
+echo "export PATH=\"\$PATH:/app/vendor/qrencode/bin\"" >> $BUILD_DIR/.profile.d/0000_set-deps-dir.sh
+echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:/app/vendor/qrencode/lib\"" >> $BUILD_DIR/.profile.d/0000_set-deps-dir.sh 
 
 tar -C vendor/qrencode -xvf qrencode-3.2.0.tar.gz
 cd vendor/qrencode/qrencode-3.2.0

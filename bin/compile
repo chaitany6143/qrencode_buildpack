@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+echo "-----> Installing qrencode"
+# change to the the BUILD_DIR ($1)
+cd $1
+curl https://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.gz -s -O
+mkdir -p src/qrencode
+tar -C src/qrencode -xvf qrencode-3.2.0.tar.gz
+cd src/qrencode
+./configure --prefix=$1/vendor/qrencode
+make install
+rm -rf src/qrencode

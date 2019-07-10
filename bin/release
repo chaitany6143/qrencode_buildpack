@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-#cat <<EOF
-#---
-#config_vars:
-#  PATH: $PATH:$HOME/vendor/qrencode/bin
-#EOF
+
+echo "---"
+echo "addons:"
+echo "config_vars:"
+echo "  PATH: $PATH:/app/vendor/qrencode"
+echo "default_process_types:"

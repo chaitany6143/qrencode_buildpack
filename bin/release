@@ -3,5 +3,5 @@
 echo "---"
 echo "addons:"
 echo "config_vars:"
-echo "  PATH: $PATH:/vendor/qrencode"
+echo "  PATH: $PATH:/app/vendor/qrencode"
 echo "default_process_types:"

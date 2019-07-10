@@ -3,14 +3,21 @@ echo "-----> Installing qrencode"
 # change to the the BUILD_DIR ($1)
 
 BUILD_DIR=$1
-cd $BUILD_DIR
+mkdir -p $BUILD_DIR/src
+#Fetch qrencode package
+cd $BUILD_DIR/src
 curl https://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.gz -s -O
-mkdir -p vendor/qrencode
+tar -xvf qrencode-3.2.0.tar.gz
+
+cd qrencode-3.2.0
+mkdir -p $BUILD_DIR/vendor/qrencode
+./configure --prefix=$BUILD_DIR/vendor/qrencode
+make install
+
+#set PATHS
 mkdir -p "$BUILD_DIR/.profile.d"
 echo "export PATH=\"\$PATH:/app/vendor/qrencode/bin\"" >> $BUILD_DIR/.profile.d/0000_set-deps-dir.sh
 echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:/app/vendor/qrencode/lib\"" >> $BUILD_DIR/.profile.d/0000_set-deps-dir.sh 
 
-tar -C vendor/qrencode -xvf qrencode-3.2.0.tar.gz
-cd vendor/qrencode/qrencode-3.2.0
-./configure --prefix=$BUILD_DIR/vendor/qrencode
-make install
+#cleanup
+rm -rf $BUILD_DIR/src

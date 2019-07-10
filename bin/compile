@@ -5,7 +5,6 @@ cd $1
 curl https://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.gz -s -O
 mkdir -p src/qrencode
 tar -C src/qrencode -xvf qrencode-3.2.0.tar.gz
-cd src/qrencode
+cd src/qrencode/qrencode-3.2.0
 ./configure --prefix=$1/vendor/qrencode
 make install
-rm -rf src/qrencode
